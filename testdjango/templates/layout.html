@@ -18,11 +18,66 @@
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 
-<body>
-    <div class="container py-4">
-        {% block content %}
-        {% endblock %}
-    </div>
+<body class="bg-dark">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+        <a class="navbar-brand" href="#"><span class="badge badge-pill badge-light ">Smart bed</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Features
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Lamp</a>
+                        <a class="dropdown-item" href="#">Bed</a>
+                        <a class="dropdown-item" href="#">Timer</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Help
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">About app</a>
+                        <a class="dropdown-item" href="#">Contact</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    {% block content %}
+    {% endblock %}
+    <footer>
+
+        <div class="container-fluid  bg-light">
+            <table style="width:190%">
+                <th>
+                <td>
+                    INC362 Computer Based
+                </td>
+                <td>
+                    <p id="demo"></p>
+
+                    <script>
+                        var d = new Date();
+                        document.getElementById("demo").innerHTML = d.toUTCString();
+                    </script>
+                </td>
+                </th>
+        </div>
+
+    </footer>
 </body>
 
 </html>
