@@ -3,11 +3,144 @@
 {% block content %}
 <h2>Homepage</h2>
 
-<form action="/ledoff" method="get">
-    <input type="submit" value="Off LED">
-</form>
-<form action="/led0on" method="get">
-    <input type="submit" value="On LED0">
-</form>
+{% if status == 1 %}
+<i class="fas fa-archive" style="color: deepskyblue;"></i>
+{% elif status == 0 %}
+<i class="fas fa-archive" style="color: aliceblue;"></i>
+{% endif %}
+
+<div class="btn">
+
+    <div class="custom-control custom-radio custom-control-inline">
+        <form action="/ledoff" method="get">
+            <input type="submit" value="Off LED">
+        </form>
+    </div>
+    <div class="custom-control custom-radio custom-control-inline">
+        <form action="/led0on" method="get">
+            <input type="submit" value="On LED0">
+        </form>
+    </div>
+    
+</div>
+<div class="container-l  text-white">
+    <div class="container-fluid ">
+        <h1><i class="fas fa-mobile-alt"></i> Controller</h1>
+    </div>
+
+    <div class="container">
+        <br>
+        <div class="row">
+            <div class="col-md-5">
+                <h2><i class="fas fa-lightbulb"></i> Lamp <span class="badge badge-pill bg-info">LED</span></h2>
+                <h4>Status </h4>
+                <form action="/LED">
+                    <div class="custom-control custom-switch">
+                        <input type="submit" class="custom-control-input" id="switch1" name="example">
+                        <label class="custom-control-label" for="switch1">ON-OFF</label>
+                    </div>
+                </form>
+                <br>
+                <h4>Color mode</h4>
+                <button type="button" class="btn btn-outline-primary">Blue</button>
+                <button type="button" class="btn btn-outline-success">Green</button>
+                <button type="button" class="btn btn-outline-info">Sky blue</button>
+                <button type="button" class="btn btn-outline-warning">Yellow</button>
+                <button type="button" class="btn btn-outline-danger">Red</button>
+                <button type="button" class="btn btn-outline-light">light</button>
+
+
+            </div>
+
+            <div class="col-md-5">
+                <h2><i class="fas fa-clock"></i> Timer <span class="badge badge-pill bg-danger">Alarm</span></h2>
+                <div>
+                    <h4>Snooze</h4>
+                </div>
+                <div>
+                    <h6 style="color: gray;">You can setting about times of snooze</h6>
+                </div>
+            </div>
+
+            <div class="col-md-5">
+                <br>
+                <h2><i class="fas fa-chart-bar"></i> Sleep <span class="badge badge-pill bg-secondary">Graph</span></h2>
+                <br>
+                <canvas id="myChart" width="400" height="400"></canvas>
+                <script>
+                    var ctx = document.getElementById('myChart').getContext('2d');
+                    var myChart = new Chart(ctx, {
+
+                        type: 'bar',
+                        data: {
+
+                            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                            datasets: [{
+                                label: '# of Votes',
+                                data: [7, 4, 8, 8, 7, 6, 7],
+                                backgroundColor: [
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(153, 102, 255, 0.2)',
+                                    'rgba(255, 0, 0, 0.2)',
+
+                                ],
+                                borderColor: [
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(255, 159, 64, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(255, 0, 0, 1)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                </script>
+            </div>
+            <div class="col-md-5">
+                <br>
+                <h2><i class="fas fa-bed"></i> Bed <span class="badge badge-pill badge-light">Motion</span></h2>
+                <div>
+                    <h4>Function</h4>
+                    <form>
+                        <h5><label for="customRange">Vibration value <small style="color: gray;"">(This function use with timer)</small></label></h5>
+                           <input type=" range" class="custom-range" id="customRange" name="points1">
+                    </form>
+                    <h5>Head bed degree</h5>
+                    <a href="#" style="padding: 5px 10px; background-color: skyblue; border-radius: 5px; ">
+                        <i class="fas fa-arrow-up"></i>
+                    </a>
+                    <a href="#" style="padding: 5px 10px; background-color: skyblue; border-radius: 5px; ">
+                        <i class="fas fa-arrow-down"></i>
+                    </a>
+                    <br>
+                    <br>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 50%"
+                        aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <br>
+</div>
+</div>
 
 {% endblock%}
